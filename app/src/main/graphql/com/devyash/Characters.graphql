@@ -1,0 +1,15 @@
+query ExampleQuery($page: Int) {
+    characters(page: $page) {
+        results {
+            image
+            name
+            origin {
+                name
+            }
+            species
+            location {
+                name
+            }
+        }
+    }
+}

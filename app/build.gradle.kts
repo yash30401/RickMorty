@@ -85,7 +85,7 @@ dependencies {
     api ("org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines")
 
     // Glide
-    implementation('com.github.bumptech.glide:glide:4.15.1')
+    implementation("com.github.bumptech.glide:glide:4.15.1")
 
 }
 

@@ -10,7 +10,7 @@ import com.devyash.rickmorty.R
 import com.devyash.rickmorty.databinding.CharacterItemLayoutBinding
 import com.devyash.rickmorty.domain.CharacterSurface
 
-class CharacterAdapter(private val charctersList: MutableList<CharacterSurface>) :
+class CharacterAdapter(private val charctersList: List<CharacterSurface>) :
     RecyclerView.Adapter<CharacterAdapter.CharacterViewHolder>() {
 
     inner class CharacterViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

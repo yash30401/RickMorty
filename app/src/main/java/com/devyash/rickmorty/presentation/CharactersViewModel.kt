@@ -8,15 +8,17 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.emitAll
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class CharactersViewModel @Inject constructor(private val getCharacterUseCase: GetCharacterUseCase) : ViewModel() {
+class CharactersViewModel @Inject constructor(private val getCharacterUseCase: GetCharacterUseCase) :
+    ViewModel() {
 
     private val _state = MutableStateFlow(CharactersState())
-    val state:StateFlow<CharactersState> = _state
+    val state: StateFlow<CharactersState> = _state
 
     init {
         viewModelScope.launch {
@@ -27,7 +29,9 @@ class CharactersViewModel @Inject constructor(private val getCharacterUseCase: G
             }
             _state.update {
                 it.copy(
-                    characters = getCharacterUseCase.execute(1),
+                    characters = getCharacterUseCase.execute(1) + getCharacterUseCase.execute(2) + getCharacterUseCase.execute(
+                        3
+                    ),
                     isLoading = false
                 )
             }

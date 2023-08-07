@@ -10,7 +10,7 @@ import javax.inject.Inject
 
 class ApolloCharacterClient @Inject constructor(private val apolloClient: ApolloClient):CharacterClient{
     override suspend fun getCharacters(page: Int): List<CharacterSurface> {
-        return apolloClient.query(ExampleQuery(Optional.presentIfNotNull(1)))
+        return apolloClient.query(ExampleQuery(Optional.presentIfNotNull(page)))
             .execute()
             .data
             ?.characters?.results
@@ -19,6 +19,5 @@ class ApolloCharacterClient @Inject constructor(private val apolloClient: Apollo
             }
             ?: emptyList()
     }
-
 
 }

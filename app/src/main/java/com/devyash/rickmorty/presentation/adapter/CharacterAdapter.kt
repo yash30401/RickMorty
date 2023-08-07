@@ -10,7 +10,7 @@ import com.devyash.rickmorty.R
 import com.devyash.rickmorty.databinding.CharacterItemLayoutBinding
 import com.devyash.rickmorty.domain.CharacterSurface
 
-class CharacterAdapter(private val charctersList: List<CharacterSurface>) :
+class CharacterAdapter(private val charctersList: List<CharacterSurface>,  private val characterClickListner: CharacterClickListner) :
     RecyclerView.Adapter<CharacterAdapter.CharacterViewHolder>() {
 
     inner class CharacterViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -22,6 +22,10 @@ class CharacterAdapter(private val charctersList: List<CharacterSurface>) :
             LayoutInflater.from(parent.context)
                 .inflate(R.layout.character_item_layout, parent, false)
         )
+
+        viewHolder.binding.characterContainer.setOnClickListener {
+            characterClickListner.onClick(charctersList[viewHolder.adapterPosition])
+        }
 
         return viewHolder
     }
@@ -36,4 +40,9 @@ class CharacterAdapter(private val charctersList: List<CharacterSurface>) :
         Glide.with(holder.itemView.context).load(currentCharacter.image.toUri())
             .into(holder.binding.ivCharacterImage)
     }
+
+}
+
+interface CharacterClickListner{
+    fun onClick(characterSurface: CharacterSurface)
 }

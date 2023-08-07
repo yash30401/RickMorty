@@ -31,7 +31,7 @@ class CharactersViewModel @Inject constructor(private val getCharacterUseCase: G
                 it.copy(
                     characters = getCharacterUseCase.execute(1) + getCharacterUseCase.execute(2) + getCharacterUseCase.execute(
                         3
-                    ),
+                    ) + getCharacterUseCase.execute(4),
                     isLoading = false
                 )
             }

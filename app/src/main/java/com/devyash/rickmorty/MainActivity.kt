@@ -7,8 +7,10 @@ import androidx.compose.runtime.collectAsState
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import com.devyash.rickmorty.databinding.ActivityMainBinding
+import com.devyash.rickmorty.domain.CharacterSurface
 import com.devyash.rickmorty.presentation.CharactersViewModel
 import com.devyash.rickmorty.presentation.adapter.CharacterAdapter
+import com.devyash.rickmorty.presentation.adapter.CharacterClickListner
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -16,7 +18,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 @AndroidEntryPoint
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(),CharacterClickListner {
 
     private var _binding: ActivityMainBinding? = null
     private val binding get() = _binding!!
@@ -32,7 +34,7 @@ class MainActivity : AppCompatActivity() {
 
         GlobalScope.launch {
             viewModel.state.collect { it ->
-                characterAdapter = CharacterAdapter(it.characters)
+                characterAdapter = CharacterAdapter(it.characters,this@MainActivity)
                 withContext(Dispatchers.Main) {
                     binding.recylerView.apply {
                         adapter = characterAdapter
@@ -48,5 +50,9 @@ class MainActivity : AppCompatActivity() {
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
+    }
+
+    override fun onClick(characterSurface: CharacterSurface) {
+
     }
 }

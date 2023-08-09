@@ -7,6 +7,12 @@
 1. View a list of characters with their images.
 2. See details of each character, including their species, location, and origin.
 
+### Screenshots
+![screenshot 1](https://github.com/yash30401/RickMorty/assets/46748588/1849c4e1-9ab6-4cc2-a21d-b7714dfb6e21)
+![screenshot2](https://github.com/yash30401/RickMorty/assets/46748588/9a7dae4f-0d21-4c22-84cf-1ee4dfdd96f0)
+![screenshot3](https://github.com/yash30401/RickMorty/assets/46748588/b6418c1b-ffbb-441b-b6bc-1f9656a49b82)
+
+
 ### Technologies Used
 1. Android Kotlin
 2. GraphQL
